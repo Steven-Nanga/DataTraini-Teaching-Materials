@@ -1,3 +1,4 @@
-# Stata-commands-in-R-Package-
+# Collection of Data Analytics Materials for teaching at Datatraini
 
-This is an implimatation on some stata commands in R. The focus will be on descritive statistics comands
+Materials Included
+ - R lessons (R markdown and R script files)
