@@ -1,0 +1,83 @@
+---
+title: " Installing and Loading R Packages"
+author: "Steven Nanga"
+date: "2024-02-28"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+### Installing R Packages:
+
+- **What is an R Package?**
+  - An R package is a collection of functions, data sets, documentation, and tests. It        allows you to organize your work and share it with others.
+  - Packages enhance R by improving existing functionalities or adding new ones.
+  - The DESCRIPTION file provides basic information about a package, including its       purpose, author, version, license, and dependencies.
+  
+- **Where to Find Packages?**
+  - Packages are available from various sources:
+     - **CRAN (Comprehensive R Archive Network):** The official repository with thousands of packages.
+     - **CRAN Mirrors:** Alternative servers hosting CRAN packages.
+     - **Bioconductor:** Specialized for biology-related packages.
+     - **GitHub:** For developing versions of packages.
+     
+- **How to Install Packages?**
+  - Use the install.packages() function:
+```{r}
+# install.packages("package_name")
+
+```
+  
+  - For example, to install the dplyr package:
+
+```{r}
+# install.packages("dplyr")
+
+```
+
+### Loading R Packages:
+- Using the library() Function:
+  - Load a package into your R session:
+```{r}
+# library(package_name)
+
+```
+  - For example, to load the dplyr package:
+  
+```{r}
+library(dplyr)
+```
+  
+- Alternative: require() Function:
+  - Similar to library(), but returns a logical value (useful for conditional checks).
+  
+
+- Checking Package Version:
+  - Sometimes specific package versions are required for compatibility.
+  - Ensure you have the correct version using:
+  
+```{r}
+# packageVersion("package_name")
+
+```
+  
+- Detaching a Package:
+  - To unload a package from the current session:  
+```{r}
+# detach(package:package_name, unload = TRUE)
+
+```
+ 
+## Further Learning Resources
+
+1. **R Tutorial:** http://openintrostat.github.io/oilabs-tidy/01_intro_to_r/intro_to_r.html
+2. **Hands-on Programming with R:** https://github.com/rstudio-education/hopr
+3. **All About R:** https://www.datacamp.com/blog/category/r-programming
+4. **R Tutorial by GeeksforGeeks:** https://www.geeksforgeeks.org/r-tutorial/
+5. **R for Data Science by Bookdown:** https://bookdown.org/roy_schumacher/r4ds/
+6. **Statistics Globe:** https://statisticsglobe.com/
+7. **Dataquest:** https://www.dataquest.io/  
+  
