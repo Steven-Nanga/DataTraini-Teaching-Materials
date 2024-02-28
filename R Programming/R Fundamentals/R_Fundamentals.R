@@ -2,15 +2,16 @@
 title: "R Fundamentals"
 author: "Steven Nanga"
 date: "2024-02-27"
-output: powerpoint_presentation
+output: word_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## R Basic Syntax
 
-## Assignment Operator (<- or =):
+### Assignment Operator (<- or =):
 - Use the assignment operator to assign values to variables. For example
 
 
@@ -21,7 +22,7 @@ z = 11
 
 ```
 
-## Variables:
+### Variables:
 - Variables store data. You can name them as you like (following rules like starting with a letter or a dot).
 
 ```{r}
@@ -30,14 +31,14 @@ my_name <- "Alice"
 
 ```
 
-## Comments: 
+### Comments: 
 - Add comments to explain your code. Comments start with #. They are ignored by R but help others (and your future self) understand your code:
 
 ```{r}
 # This is a comment
 ```
 
-## Arithmetic Operators:
+### Arithmetic Operators:
 - R supports standard arithmetic operations:
 
 ```{r}
@@ -48,7 +49,7 @@ division_result <- 20 / 5
 
 ```
 
-## Logical Operators:
+### Logical Operators:
 These operators allow you to perform logical comparisons and combine conditions. Here are the key ones:
   1. **Logical AND (& or &&):**
      - The & operator checks if both conditions are true.
@@ -74,7 +75,7 @@ result3 <- a | b  # TRUE
 result4 <- a || b  # TRUE
 ```
     
-## Comparison Operators
+### Comparison Operators
 - These operators compare values and return logical results.
 - Common comparison operators:
    - \>: Greater than
@@ -93,8 +94,9 @@ result7 <- num1 == num2  # FALSE
 
 ```
 
+## Data Types
 
-## R Data Types
+### R Data Types
 
 1. **Numeric (Double):**
    - Represents real numbers, including integers and decimals.
@@ -134,7 +136,7 @@ complex_value <- 1 + 2i
 character_value <- "Hello, world"
 ```
    
-## Checking Data Types:
+### Checking Data Types:
 - Use the class() function to determine the data type of a variable:   
 
 ```{r}
@@ -146,7 +148,7 @@ class(y)  # Returns "character"
 
 ```
 
-##  Data type conversion in R
+###  Data type conversion in R
 
 Data type conversion allows you to transform one type of data into another. Here are some common scenarios and functions for type conversion:
 
@@ -202,7 +204,7 @@ char_factor <- as.character(my_factor)  # Converts factor to "High"
 
 These structures allow you to organize and store data efficiently within the R programming language. Each data structure serves a specific purpose and has its own characteristics. Here are the key ones:
 
-## Vectors:
+### Vectors:
 - A vector is an ordered collection of basic data types (e.g., numeric, character, logical) of a given length.
 - All elements in a vector must be of the same data type (homogeneous).
 - Vectors are one-dimensional data structures.
@@ -214,7 +216,7 @@ X <- c(1, 3, 5, 7, 8)  # Numeric vector
 ```
 
 
-## Lists
+### Lists
 - A list is a generic object consisting of an ordered collection of other objects.
 - Lists can be heterogeneous (elements of various types).
 - They are also one-dimensional data structures.
@@ -228,7 +230,7 @@ empList <- list(empId, empName, numberOfEmp)
 
 ```
 
-## Dataframes:
+### Dataframes:
 - Dataframes are widely used for storing tabular data.
 - They are two-dimensional, heterogeneous data structures.
 - Each column must have the same number of items, and different columns may have different data types.
@@ -242,7 +244,7 @@ df <- data.frame(Name, Language, Age)
 
 ```
 
-## Matrices:
+### Matrices:
 - A matrix is a rectangular arrangement of numbers in rows and columns.
 - Rows run horizontally, and columns run vertically.
 - Matrices are two-dimensional and homogeneous.
@@ -253,7 +255,7 @@ my_matrix <- matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2)
 
 ```
 
-## Arrays:
+### Arrays:
 - Arrays extend matrices to more dimensions (e.g., three-dimensional arrays).
 - They are useful for handling multi-dimensional data.
 - Example:
@@ -263,7 +265,7 @@ my_array <- array(1:24, dim = c(2, 3, 4))
 
 ```
 
-## Factors:
+### Factors:
 - Factors represent categorical data (e.g., levels of a variable).
 - They are useful for statistical modeling and plotting.
 - Example:
@@ -274,7 +276,7 @@ my_factor <- factor(c("High", "Medium", "Low"))
 ```
 
 ## If-Else Statements in R
-## Basic Syntax
+### Basic Syntax
 - The if-else statement evaluates a condition and executes different code blocks depending on whether the condition is true or false.
 - Basic syntax:
 
@@ -299,7 +301,7 @@ if (x > 0) {
 
 ```
 
-## Nested If-Else:
+### Nested If-Else:
 - You can nest if-else statements to handle multiple conditions:
 
 ```{r}
@@ -314,7 +316,7 @@ if (y > 0) {
 
 ```
 
-## Vectorized If-Else:
+### Vectorized If-Else:
 - You can use vectorized ifelse() for element-wise conditional operations on vectors:
 
 ```{r}
@@ -323,4 +325,87 @@ result_vector <- ifelse(my_vector > 0, "Positive", "Non-positive")
 
 ```
 
+
 ## Loops in R
+1. **For Loops:**
+- A for loop is one of the main control-flow constructs in R.
+- It allows you to iterate over a collection of objects (e.g., vectors, lists, matrices, data frames) and apply the same set of operations to each item.
+Basic syntax:
+
+```{r}
+for (x in 1:5) {
+  print(x)
+}
+
+```
+
+2. **While Loops:**
+- A while loop executes a block of code as long as a specified condition remains true.
+- Example: Printing numbers from 1 to 5 using a while loop:
+
+```{r}
+i <- 1
+while (i <= 5) {
+  print(i)
+  i <- i + 1
+}
+
+```
+
+3. **Repeat Loops:**
+- A repeat loop executes a block of code indefinitely until explicitly stopped (usually with a break statement).
+- Example: Printing numbers from 1 to 5 using a repeat loop:
+
+```{r}
+i <- 1
+repeat {
+  print(i)
+  i <- i + 1
+  if (i > 5) break
+}
+
+```
+
+## Functions in R
+- Functions allow you to encapsulate a set of instructions into a reusable block of code.
+You can create your own functions or use built-in functions.
+- Basic syntax for creating a function:
+```{r}
+#my_function <- function(arg1, arg2) {
+  # Function body
+  # ...
+  #return(result)
+#}
+
+```
+
+- Example: Creating a simple function to calculate the square of a number:
+
+```{r}
+square <- function(x) {
+  return(x^2)
+}
+
+```
+
+-Built-in functions:
+  - R provides a rich set of built-in functions for various tasks (e.g., print(), sum(),     mean(), length()).
+  - Example: Using the sum() function:
+  
+```{r}
+my_vector <- c(1, 2, 3, 4)
+total_sum <- sum(my_vector)
+
+```
+  
+## Further Learning Resources
+
+1. **R Tutorial:** http://openintrostat.github.io/oilabs-tidy/01_intro_to_r/intro_to_r.html
+2. **Hands-on Programming with R:** https://github.com/rstudio-education/hopr
+3. **All About R:** https://www.datacamp.com/blog/category/r-programming
+4. **R Tutorial by GeeksforGeeks:** https://www.geeksforgeeks.org/r-tutorial/
+5. **R for Data Science by Bookdown:** https://bookdown.org/roy_schumacher/r4ds/
+6. **Statistics Globe:** https://statisticsglobe.com/
+7. **Dataquest:** https://www.dataquest.io/
+
+
