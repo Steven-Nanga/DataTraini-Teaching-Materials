@@ -1,0 +1,110 @@
+---
+title: "R Data Management"
+author: "Steven Nanga"
+date: "2024-02-29"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Data Cleaning and Preprocessing:
+- **Handling Missing Values:**
+  - Identify missing values (NA, NaN, etc.) and decide how to handle them.
+  - Use functions like na.omit(), complete.cases(), or impute missing values.
+  
+```{r}
+# cleaned_data = na.omit(sales_data_sample)
+
+```
+  
+- **Removing Duplicates:**
+  - Detect and remove duplicate rows using duplicated() and unique().  
+  - Identify duplicates using duplicated():
+  
+```{r}
+#duplicated_rows <- duplicated(sales_data_sample)
+# print(cleaned_data, n= 100 )
+# anyDuplicated(sales_data_sample)
+# anyDuplicated(cleaned_data)
+ 
+
+```
+  
+  - Remove duplicates using unique():
+  
+```{r}
+# unique_data = unique(cleaned_data)
+# print(unique_data)
+
+```
+ 
+- **Data Transformation:**
+  - Convert data types (e.g., numeric to character, date formatting).
+  - Create new variables using existing ones (e.g., calculating percentages). 
+  
+- **Outlier Detection and Treatment:**
+  - Identify outlines using box plots, histograms, or statistical methods.
+  
+```{r}
+# boxplot(cleaned_data$QUANTITYORDERED, main = "Quantity Ordered")
+# hist(cleaned_data$PRICEEACH, main = "Quantity Ordered")
+
+```
+  - Decide whether to remove, transform, or keep outlines. 
+
+### Data Aggregation and Summarization:
+- **Grouping Data:**
+  - Use group_by() to group data by one or more variables.
+  - Aggregate data using functions like summarize(), count(), or mean().
+  
+```{r}
+#library(dplyr)
+#summarized_data <- cleaned_data %>%
+#  group_by(PRODUCTLINE) %>%
+#   summarize(AvgPrice = mean(PRICEEACH))
+ 
+# print(summarized_data)
+
+```
+  
+- **Pivoting Data:**
+  - Convert data from long to wide format (and vice versa) using pivot_longer() and pivot_wider(). 
+  
+```{r}
+# wide_data <- original_data %>%
+ # pivot_wider(names_from = Category, values_from = Value)
+
+```
+  
+### Data Joins and Merging:
+- **Merging Datasets:**
+  - Combine data from different sources using functions like merge(), join(), or   bind_rows().
+  - Understand different join types (inner, left, right, full).
+  
+```{r}
+#merged_data <- merge(Sales, Customers, by = "CustomerID", all = TRUE)
+
+```
+- **Reshaping Data:**
+  - Transform data between wide and long formats using melt() and cast().
+  
+```{r}
+# install.packages("reshape2")
+# library(reshape2)
+# long_data <- melt(wide_data, id.vars = "Date")
+
+```
+  
+### Data Validation and Quality Assurance:
+- **Checking Data Integrity:**
+  - Validate data against business rules or constraints.
+  - Ensure consistency and accuracy.
+  
+```{r}
+# valid_dates <- original_data$Date >= "2022-01-01" & original_data$Date <= "2022-12-31"
+
+```
+  
+  
