@@ -12,7 +12,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Simple Linear Regression:
 - Uses only one independent variable (predictor) to predict a single dependent variable (response).
 - Example: Predicting exam scores based on study hours.
-- We’ll walk through an example using a dataset containing income and happiness ratings.
 
 ## Multiple Linear Regression:
 - Uses two or more independent variables to predict a single dependent variable.
