@@ -1,0 +1,108 @@
+---
+title: "Regression"
+author: "Steven Nanga"
+date: "2024-03-06"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Simple Linear Regression:
+- Uses only one independent variable (predictor) to predict a single dependent variable (response).
+- Example: Predicting exam scores based on study hours.
+- We’ll walk through an example using a dataset containing income and happiness ratings.
+
+## Multiple Linear Regression:
+- Uses two or more independent variables to predict a single dependent variable.
+- Example: Predicting heart disease rates based on biking to work percentage and smoking percentage.
+- We’ll also explore this using a sample dataset.
+
+Here’s a step-by-step guide for both types of linear regression in R:
+
+### Load the Data:
+- Load your dataset into R. For our example, we’ll use a dataset with income and happiness ratings.
+
+### Assumptions:
+- Ensure your data meets the assumptions for linear regression.
+1. **Linearity of the Data:**
+     - The assumption is that the relationship between each predictor (independent variable)        and the outcome variable (dependent variable) is linear.
+     - You can check this by creating a scatter plot of the predictor against the response         variable. If the points form a roughly straight line, the assumption is likely met.
+     
+```{r}
+# Load the data
+library(readr)
+dat <- read_csv("C:/Users/snanga/Downloads/archive/sales_data_sample.csv")
+
+# Scatter plot: Quantity Ordered vs. Sales
+plot(dat$QUANTITYORDERED, dat$SALES, main = "Quantity Ordered vs. Sales", xlab = 'Quantity Ordered', ylab = 'Sales')
+
+```
+ 
+2. **Independence of Errors:**
+      - Each observation should be independent of others. This means that the residuals             (errors) should not be correlated.
+      - You can use the Durbin-Watson test to check for independence. The durbinWatsonTest()         function in R provides a p-value that helps determine whether the assumption is met         or not.     
+      
+```{r}
+# Fit your regression model (assuming you already have one)
+model <- lm(SALES ~ QUANTITYORDERED, data = dat)
+
+library(car)
+# Check for independence using Durbin-Watson test
+durbin_test <- durbinWatsonTest(model)
+print(durbin_test)
+```
+      
+3. **Homoscedasticity:**
+   - Homoscedasticity means that the variance of the residuals should be constant across all      levels of the predictor.
+   - Plot the residuals against the predicted values. If the spread of residuals is roughly      consistent, homoscedasticity is likely met.
+   
+```{r}
+# Plot residuals vs. fitted values
+plot(model$fitted.values, model$residuals, main = "Residuals vs. Fitted Values")
+```
+  
+4. **Normality of Residuals:**
+   - The residuals should follow a normal distribution.
+   - Create a histogram or a Q-Q plot of the residuals. If they resemble a bell-shaped           curve, the assumption is more likely to be satisfied.   
+   
+```{r}
+# Histogram of residuals
+hist(model$residuals, main = "Histogram of Residuals")
+
+# Q-Q plot of residuals
+qqnorm(model$residuals)
+qqline(model$residuals)
+```
+   
+## Perform the Analysis:
+- Fit the linear regression model using the lm() function:   
+
+```{r}
+# Fit your regression model (assuming you already have one)
+model <- lm(SALES ~ QUANTITYORDERED, data = dat)
+summary(model)
+```
+
+## Check for Homoscedasticity:
+- Plot the residuals against the predicted values to check for even spread:
+
+```{r}
+plot(model, which = 1)
+
+```
+
+## Visualize the Results:
+- Create a scatter plot with the regression line:
+
+```{r}
+plot(dat$QUANTITYORDERED, dat$SALES, main = "QUANTITY ORDERED vs. SALES")
+abline(model, col = "red")
+```
+
+## Report Your Results:
+- Interpret the coefficients:
+  - The intercept represents the expected happiness when income is zero.
+  - The slope represents the change in happiness for a one-unit increase in income.
+- Assess goodness of fit (e.g., R-squared value)
