@@ -16,12 +16,12 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Multiple Linear Regression:
 - Uses two or more independent variables to predict a single dependent variable.
 - Example: Predicting heart disease rates based on biking to work percentage and smoking percentage.
-- We’ll also explore this using a sample dataset.
+
 
 Here’s a step-by-step guide for both types of linear regression in R:
 
 ### Load the Data:
-- Load your dataset into R. For our example, we’ll use a dataset with income and happiness ratings.
+- Load your dataset into R. 
 
 ### Assumptions:
 - Ensure your data meets the assumptions for linear regression.
